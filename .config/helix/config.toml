@@ -1,0 +1,16 @@
+theme = "ayu_dark"
+
+[editor]
+true-color = true
+bufferline = "always"
+
+[editor.file-picker]
+hidden = false
+
+[editor.indent-guides]
+render = true
+character = "┊"
+skip-levels = 0
+
+[editor.statusline]
+center = ["version-control"]
