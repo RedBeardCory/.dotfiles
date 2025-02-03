@@ -16,7 +16,7 @@ setup_repo() {
     printf "Repo already exists, skipping this step...\n"
   else
     printf "Cloning the repo...\n"
-    git clone --bare $GIT_REPO $CLONE_DIR
+    git clone $GIT_REPO $CLONE_DIR
   fi
 }
 
