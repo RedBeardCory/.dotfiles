@@ -1,2 +1,4 @@
 [pull]
 	ff = only
+[init]
+	templatedir = ~/.config/git/template

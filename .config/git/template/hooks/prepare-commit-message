@@ -1,0 +1,22 @@
+#!/bin/sh
+
+COMMIT_MSG_FILE=$1
+COMMIT_MSG=$2
+
+ticket=$(git rev-parse --symbolic --abbrev-ref HEAD | sed -r 's/.*((tpz|TPZ)-[0-9]{1,4}).*/\U\1/')
+
+case "$COMMIT_MSG" in
+        "message")
+                message=$(cat "$COMMIT_MSG_FILE")
+                printf "%s: %s" "$ticket" "$message" > "$COMMIT_MSG_FILE"
+                ;;
+        "")
+                status=$(git status | sed -r "s/^/# /g")
+                printf "%s: \n\n%s\n" "$ticket" "$status" > "$COMMIT_MSG_FILE"
+                ;;
+        *)
+                # skip ticket prepend logic
+                # This is used when running `git commit --amend`, squashing and merging
+                exit 0
+                ;;
+esac
